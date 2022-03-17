@@ -40,21 +40,27 @@ class Carousel {
         
         arr.forEach( function(arrElement){
 
-            const div = document.createElement("div");
+            const slideDiv = document.createElement("div");
+            slideDiv.classList.add("slide");
+
+            const titleDiv = document.createElement("div");
+            titleDiv.classList.add("title");
+
             const img = document.createElement("img");
-            // const a = document.createElement("a");
+            const a = document.createElement("a");
 
-            div.classList.add("slide");
             img.src = arrElement._image;
-            // a.textContent = arrElement._title;
-            // a.href = arrElement._url;
+            a.textContent = arrElement._title;
+            a.href = arrElement._url;
             
-            //define o primeiro slide como active
-            if (carouselDiv.childNodes.length === 1) div.dataset.active = true; 
+            if (carouselDiv.childNodes.length === 1) slideDiv.dataset.active = true; //define o primeiro slide como active
+            if (carouselTitleDiv.childNodes.length === 1) titleDiv.dataset.titleDisplay = true; //define o primeiro título como active
 
-            div.append(img)
-            carouselDiv.append(div);
-            // carouselTitleDiv.append(a);
+            slideDiv.append(img)
+            carouselDiv.append(slideDiv);
+            
+            titleDiv.append(a)
+            carouselTitleDiv.append(titleDiv);
         })
     }
 
@@ -65,6 +71,9 @@ class Carousel {
         
         const slides = document.querySelectorAll(".slide");
         const activeSlide = document.querySelector("[data-active]");
+
+        const titles = document.querySelectorAll(".title");
+        const activeTitle = document.querySelector("[data-title-display]")
         
         Carousel._sequence = [...slides].indexOf(activeSlide) + 1; //incremento no contador
 
@@ -72,5 +81,8 @@ class Carousel {
         
         [...slides][Carousel._sequence].dataset.active = true;
         delete activeSlide.dataset.active;
+
+        [...titles][Carousel._sequence].dataset.titleDisplay = true;
+        delete activeTitle.dataset.titleDisplay;
     }
 };
