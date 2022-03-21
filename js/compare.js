@@ -30,7 +30,6 @@ function GetCarArrPosition(arr, carClass) {
 }
 
 function SetCarToCompare(el, carClass) {
-   
     if(carClass instanceof Car){       
         if(el.checked){
             if(carArr.length > 1) {
@@ -38,8 +37,7 @@ function SetCarToCompare(el, carClass) {
             }
             else{
                 carArr.push(carClass);
-            }
-            
+            }      
         } else {
             carArr.splice(GetCarArrPosition(carArr, carClass),1);
         } 
@@ -59,20 +57,41 @@ function ShowCompare() {
 }
 
 function HideCompare(){
-    //quando ocurtar a página, deletar o conteúdo da tabela no documento html
     document.getElementById("compare").style.display = "none"; 
+    const imgTags = [...document.querySelectorAll("#compare img")];
+    const pTags = [...document.querySelectorAll("#compare p")];
+    const allTags = imgTags.concat(pTags);
+
+    allTags.forEach((tag)=>{
+        tag.remove();
+    })
 }
 
 function UpdateCompareTable() {
-    //corrigir formatação das imagens
-    img0 = document.createElement("img");
-    img0.src = carArr[0].image;
-    img0.alt = "veiculo 1";
-    img1 = document.createElement("img");
-    img1.src = carArr[1].image;
-    img1.alt = "veiculo 2";
-    document.getElementById("compare_image_0").appendChild(img0);
-    document.getElementById("compare_image_1").appendChild(img1);
-
+    for(let i = 0; i < carArr.length; i++){
+        let n = ("%s",i)
+        pushCompareDataIntoTable("img","compare_image_"+n,carArr[i].image);
+        pushCompareDataIntoTable("p","compare_modelo_"+n,carArr[i].nome);
+        pushCompareDataIntoTable("p","compare_alturacacamba_"+n,carArr[i].alturaCacamba);
+        pushCompareDataIntoTable("p","compare_alturaveiculo_"+n,carArr[i].alturaVeiculo);
+        pushCompareDataIntoTable("p","compare_alturasolo_"+n,carArr[i].alturaSolo);
+        pushCompareDataIntoTable("p","compare_capacidadecarga_"+n,carArr[i].capacidadeCarga);
+        pushCompareDataIntoTable("p","compare_motor_"+n,carArr[i].motor);
+        pushCompareDataIntoTable("p","compare_potencia_"+n,carArr[i].potencia);
+        pushCompareDataIntoTable("p","compare_volumecacamba_"+n,carArr[i].volumeCacamba);
+        pushCompareDataIntoTable("p","compare_roda_"+n,carArr[i].roda);
+        pushCompareDataIntoTable("p","compare_preco_"+n,carArr[i].preco);
+    }
 }
 
+function pushCompareDataIntoTable(tag,id,data) {
+    const htmlElement = document.createElement(tag);
+    
+    if (tag === "img"){
+        htmlElement.src = data;
+    }
+    else if (tag === "p"){
+        htmlElement.textContent = data;
+    }
+    document.getElementById(id).appendChild(htmlElement);
+}

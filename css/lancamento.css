@@ -47,7 +47,7 @@ img.photocar {
 
 table {
     border-collapse: collapse;
-    width: 80%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2vh;
@@ -71,8 +71,8 @@ div#compare {
     display: none;
     width: 50vw;
     max-width: 800px;
-    min-width: 400px;
-    height: 80vh;
+    min-width: 600px;
+    /* height: 80vh; */
     max-height: 700px;
     min-height: 350px;
     background: #fff;
@@ -82,4 +82,8 @@ div#compare {
     padding: 10px;
     -webkit-box-shadow: 1px 1px 6px 0px rgb(0 0 0 / 34%);
     box-shadow: 1px 1px 6px 0px rgb(0 0 0 / 34%);
+}
+
+#compare img{
+    height: 100px;
 }
