@@ -69,7 +69,7 @@ class Carousel {
 
     static Next(){
         /* 
-        * Metodo responsável por exibir o conteúdo na tela e incrementar o contador. 
+        * Método responsável por exibir o conteúdo na tela e incrementar o contador. 
         */
         
         const slides = document.querySelectorAll(".slide"); //seleciona todas as divs com a classe slide
@@ -80,7 +80,7 @@ class Carousel {
         
         Carousel._sequence = [...slides].indexOf(activeSlide) + 1; //retorna o index do slide ativo e incrementa o contador
 
-        if (Carousel._sequence >= Carousel._size) Carousel._sequence = 0; //zera ocontador caso seu valor extrapole o tamanho do array
+        if (Carousel._sequence >= Carousel._size) Carousel._sequence = 0; //zera o contador caso seu valor extrapole o tamanho do array
         
         [...slides][Carousel._sequence].dataset.active = true; //define o próximo slide como ativo
         delete activeSlide.dataset.active; //desativa o slide anterior

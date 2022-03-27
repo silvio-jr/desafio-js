@@ -64,6 +64,7 @@ button:hover{
     margin: 10px ;
     color: red;
     text-align: center;
+    line-height: 120%;
 }
 
 .container{

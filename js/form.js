@@ -23,21 +23,23 @@ function Post(form) {
 }
 
 function Enviar() {
+    /*
+    * função que valida o preenchimento do form
+    * exibe mensagem de erro caso o form não tenha sido preenchido corretamente
+     */
 
     const formData = [...document.querySelectorAll(".fordform")];
     const errorElement = document.querySelector("#error");
     let messages = [];
     
     formData.forEach(arrItem => {
-        if (arrItem.value === '' || arrItem.value === null) messages.push(arrItem.name); 
+        if (arrItem.value === '' || arrItem.value === null) messages.push((arrItem.name).toUpperCase()); 
     });
-
-    if(formData[5].value === "COMO DESEJA SER CONTATADO") messages.push(formData[5].name);
 
     if (messages.length === 0){
         alert('Obrigado sr(a) ' + formData[0].value + ' os seus dados foram encaminhados com sucesso');
         errorElement.innerText = "";
-    } else{
+    }else{
         errorElement.innerText = "*Campo(s) obrigatório(s): " + messages.join(", ") + ".";
     }
 }
