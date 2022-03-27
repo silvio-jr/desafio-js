@@ -48,7 +48,7 @@ function SetCarToCompare(el, carClass) {
 
 function ShowCompare() {
     if(carArr.length < 2) {
-        alert("Precisa marcar 2 carros para apresentar a comparação");
+        alert("Precisa-se marcar 2 carros para apresentar a comparação.");
         return;
     }
 
@@ -69,7 +69,7 @@ function HideCompare(){
 
 function UpdateCompareTable() {
     for(let i = 0; i < carArr.length; i++){
-        let n = ("%s",i)
+        let n = ("%s",i);
         pushCompareDataIntoTable("img","compare_image_"+n,carArr[i].image);
         pushCompareDataIntoTable("p","compare_modelo_"+n,carArr[i].nome);
         pushCompareDataIntoTable("p","compare_alturacacamba_"+n,carArr[i].alturaCacamba);

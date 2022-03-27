@@ -46,19 +46,23 @@ class Carousel {
             titleDiv.classList.add("title");
 
             const img = document.createElement("img");
-            const a = document.createElement("a");
+            const carouselA = document.createElement("a");
+            const TitleA = document.createElement("a");
 
             img.src = arrItem._image; 
-            a.textContent = arrItem._title; 
-            a.href = arrItem._url;
+            carouselA.href = arrItem._url;
+            TitleA.textContent = arrItem._title; 
+            TitleA.href = arrItem._url;
             
             if (carouselDiv.childNodes.length === 1) slideDiv.dataset.active = true; //define o primeiro slide como active
             if (carouselTitleDiv.childNodes.length === 1) titleDiv.dataset.titleDisplay = true; //define o primeiro título como display
 
-            slideDiv.append(img)
-            carouselDiv.append(slideDiv); //o documento html recebe a div criada com o conteúdo das imagens
+            slideDiv.append(img);
+            carouselA.append(slideDiv);
+            carouselDiv.append(carouselA); //o documento html recebe a tag "a" com o conteúdo dos slides
             
-            titleDiv.append(a)
+
+            titleDiv.append(TitleA);
             carouselTitleDiv.append(titleDiv); //o documento html recebe a div criada com o conteúdo dos títulos
         })
     }
@@ -72,7 +76,7 @@ class Carousel {
         const activeSlide = document.querySelector("[data-active]"); //seleciona o slide com o data attribute active (este é o slide que está sendo exibido)
 
         const titles = document.querySelectorAll(".title"); //seleciona todas as divs com a classe title
-        const displayedTitle = document.querySelector("[data-title-display]") //seleciona o título com o data attribute title-display (este é o título que está sendo exibido)
+        const displayedTitle = document.querySelector("[data-title-display]"); //seleciona o título com o data attribute title-display (este é o título que está sendo exibido)
         
         Carousel._sequence = [...slides].indexOf(activeSlide) + 1; //retorna o index do slide ativo e incrementa o contador
 
